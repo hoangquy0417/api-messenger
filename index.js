@@ -24,8 +24,8 @@ app.post('/register', async (req, res) => {
     jwt.sign({userId: createdUser._id,jwtSecret}, (err, token) => {
         if (err) throw err;
         res.cookie("token", token).status(201).json('ok');
-    })
-
+    });
+})
 app.listen(3000, ()=> {
     console.log("Server is running");
 });
