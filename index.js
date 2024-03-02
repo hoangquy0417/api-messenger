@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import User from './Models/User';
+import User from './Models/User.js';
 import jwt from 'jsonwebtoken';
 //set up config env access env
 dotenv.config();
@@ -24,8 +24,8 @@ app.post('/register', async (req, res) => {
     jwt.sign({userId: createdUser._id,jwtSecret}, (err, token) => {
         if (err) throw err;
         res.cookie("token", token).status(201).json('ok');
-    })
-
+    });
+})
 app.listen(3000, ()=> {
     console.log("Server is running");
 });
