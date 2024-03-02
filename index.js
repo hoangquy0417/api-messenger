@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import User from './Models/User';
+import User from './Models/User.js';
 import jwt from 'jsonwebtoken';
 //set up config env access env
 dotenv.config();
