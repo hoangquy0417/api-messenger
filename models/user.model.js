@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: '',
     }
-});
+    //CreateAt, UpdateAt : mongoose.CreateAt => Since time create
+},{timestamps:true});
 const User = mongoose.model("User",userSchema);
 export default User;
