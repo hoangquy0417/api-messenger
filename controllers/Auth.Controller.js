@@ -45,7 +45,7 @@ export const signup = async (req, res) => {
         
         
     } catch (error) {
-        console.log("Error in sigup controller", error.message);
+        console.log("Error in sigup Auth.Controller", error.message);
         res.status(500).json({Error:"Internal Server Error"});
     }
 }
@@ -60,8 +60,14 @@ export const login = async (req, res) => {
            return res.status(400).json({Error: "Invalid username or password"});
         }
         generateTokenAndSetCookie(user._id, res);
+        res.status(200).json({
+			_id: user._id,
+			fullName: user.fullName,
+			username: user.username,
+			profilePic: user.profilePic,
+		});
     } catch (error) {
-        console.log("Error in login controller", error.message);
+        console.log("Error in login Auth.Controller", error.message);
         res.status(500).json({Error:"Internal Server Error"});
     }
 }
@@ -71,7 +77,7 @@ export const logout = (req, res) => {
         res.cookie("jwt","", {maxAge: 0});
         res.status(200).json({message: "Logged out successfully"});
     } catch (error) {
-        console.log("Error in login controller", error.message);
+        console.log("Error in login Auth.Controller", error.message);
         res.status(500).json({Error:"Internal Server Error"});
     }
 }
